@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.About
+
+@{
+    ViewData["Title"] = "EditAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımda Güncelleme</h2>
+<br />
+@using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.About_ID)
+    @Html.TextBoxFor(x => x.About_ID, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+   
+    <br />
+    @Html.LabelFor(x => x.Content)
+    @Html.TextAreaFor(x => x.Content,15,1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.About_Image)
+    @Html.TextBoxFor(x => x.About_Image, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+
+}

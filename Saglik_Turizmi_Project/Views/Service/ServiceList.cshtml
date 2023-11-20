@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model List<Service>
+
+@{
+    ViewData["Title"] = "ServiceList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımda düzenle</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Fotoğraf</th>
+        <th>Güncelle</th>
+
+
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <tr>
+            <td>@item.Service_Id</td>
+            <td>@item.Title</td>
+            <td>@item.Content.Substring(0,5)</td>
+            <td>@item.Service_image</td>
+            <td><a href="/Service/EditService/@item.Service_Id" class="btn btn-primary">Güncelle</a></td>
+            <td><a href="/Service/DeleteService/@item.Service_Id" class="btn btn-danger">Sil</a></td>
+
+
+
+        </tr>
+    }
+</table>
+
+<a href="/Service/AddService" class="btn btn-success"> Yeni Servis</a>

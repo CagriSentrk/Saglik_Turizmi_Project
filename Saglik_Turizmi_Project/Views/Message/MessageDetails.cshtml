@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Hakkımda Güncelleme</h2>
+<br />
+@using (Html.BeginForm("MessageDetails", "Message", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Message_Id)
+    @Html.TextBoxFor(x => x.Message_Id, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Surname)
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Subject)
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Content)
+    @Html.TextAreaFor(x => x.Content,15,1, new { @class = "form-control" , @readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Message_date)
+    @Html.TextBoxFor(x => x.Message_date, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+
+
+}

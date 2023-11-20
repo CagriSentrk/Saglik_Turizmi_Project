@@ -1,0 +1,34 @@
+﻿@using EntityLayer.Concrete
+@model List<Contact>
+
+<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+    
+     @foreach (var item in Model)
+    {
+        
+   
+    
+    <p class="d-inline-block border rounded-pill py-1 px-4">İLETİŞİM</p>
+    <h1 class="mb-4">BİZİ ARAYIN</h1>
+    <p class="mb-4">BİZİ ZİYARET EDEBİLİRSİNİZ VEYA TELEFON İLE ARAYARAK BİLGİ ALABİLİRSİNİZ.</p>
+    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+            <i class="fa fa-phone-alt text-primary"></i>
+        </div>
+
+        <div class="ms-4">
+            <p class="mb-2">TELEFON</p>
+            <h5 class="mb-0">@item.Phone_number</h5>
+        </div>
+    </div>
+    <div class="bg-light rounded d-flex align-items-center p-5">
+        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+            <i class="fa fa-envelope-open text-primary"></i>
+        </div>
+        <div class="ms-4">
+            <p class="mb-2">MAIL</p>
+            <h5 class="mb-0">@item.Mail</h5>
+        </div>
+    </div>
+    }
+</div>

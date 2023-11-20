@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Contact
+@{
+    ViewData["Title"] = "EditContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>İletişim Güncelleme</h2>
+<br />
+@using (Html.BeginForm("EditContact", "Contact", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Contact_Id)
+    @Html.TextBoxFor(x => x.Contact_Id, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Phone_number)
+    @Html.TextBoxFor(x => x.Phone_number, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Address)
+    @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+
+}

@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.Service
+@{
+    ViewData["Title"] = "EditService";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Hakkımda Güncelleme</h2>
+<br />
+@using (Html.BeginForm("EditService", "Service", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Service_Id)
+    @Html.TextBoxFor(x => x.Service_Id, new { @class = "form-control" ,@readonly="readonly"})
+    <br />
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Content)
+    @Html.TextAreaFor(x => x.Content,15,1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Service_image)
+    @Html.TextBoxFor(x => x.Service_image, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+
+}

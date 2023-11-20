@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model List<Message>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımda düzenle</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Subject</th>
+        <th>Content</th>
+        <th>Mail</th>
+        <th>Message_date</th>
+        <th>Detaylar</th>
+        <th>Sil</th>
+
+
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <tr>
+            <td>@item.Message_Id</td>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.Subject</td>
+            <td>@item.Content.Substring(0,1)</td>
+            <td>@item.Mail</td>
+            <td>@item.Message_date</td>
+            <td><a href="/Message/MessageDetails/@item.Message_Id" class="btn btn-primary">Güncelle</a></td>
+
+        </tr>
+    }
+</table>
