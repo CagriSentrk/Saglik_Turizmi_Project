@@ -1,10 +1,8 @@
-﻿
-@{
+﻿@{
     Layout = null;
+
 }
-
-
-<form asp-controller="Login" asp-action="Login" method="post">
+<form asp-controller="Register" asp-action="Index" method="post">
     <div>
         <label for="adminName">Kullanıcı Adı:</label>
         <input type="text" id="adminName" name="adminName" />
@@ -14,6 +12,8 @@
         <input type="password" id="password" name="Password" />
     </div>
     <div>
-        <button type="submit">Giriş Yap</button>
+        <button type="submit">Kayıt Ol</button>
     </div>
 </form>
+
+

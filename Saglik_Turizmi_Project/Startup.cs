@@ -1,8 +1,15 @@
+using DataAccessLayer;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -23,10 +30,22 @@ namespace Saglik_Turizmi_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>(_ => _.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnectionString"]));
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+
+                options.Password.RequiredLength = 5; //En az kaç karakterli olmasý gerektiðini belirtiyoruz.
+                options.Password.RequireNonAlphanumeric = false; //Alfanumerik zorunluluðunu kaldýrýyoruz.
+                options.Password.RequireLowercase = false; //Küçük harf zorunluluðunu kaldýrýyoruz.
+                options.Password.RequireUppercase = false; //Büyük harf zorunluluðunu kaldýrýyoruz.
+                options.Password.RequireDigit = false; //0-9 arasý sayýsal karakter zorunluluðunu kaldýrýyoruz.
+
+            }).AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
+
+            services.AddMvc();
             services.AddControllersWithViews();
         }
-
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
