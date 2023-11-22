@@ -47,8 +47,12 @@ namespace Saglik_Turizmi_Project
             services.AddControllersWithViews();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                CreateUserOnStartup(scope.ServiceProvider).GetAwaiter().GetResult();
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,6 +76,20 @@ namespace Saglik_Turizmi_Project
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+        private async Task CreateUserOnStartup(IServiceProvider serviceProvider)
+        {
+            // UserManager'ý servis saðlayýcýdan al
+            var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+
+            // Eðer kullanýcý zaten varsa oluþturmayý tekrarlamaya gerek yok
+            if (await userManager.FindByNameAsync("exampleUser") == null)
+            {
+                var newUser = new AppUser { UserName = "exampleUser", Email = "example@example.com" };
+                await userManager.CreateAsync(newUser, "yourPassword");
+                Console.WriteLine("Job Çalýþtý");
+            }
+            
         }
     }
 }

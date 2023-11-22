@@ -12,10 +12,9 @@ namespace Saglik_Turizmi_Project.Controllers
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
-        private readonly UserManager<AppUser> _userManager;
         private readonly Context _context;
 
-        public LoginController(SignInManager<AppUser> signInManager, Context context, UserManager<AppUser> userManager)
+        public LoginController(SignInManager<Admin> signInManager, DbContext context)
         {
             _signInManager = signInManager;
             _context = context;
@@ -24,33 +23,8 @@ namespace Saglik_Turizmi_Project.Controllers
 
         public IActionResult Index()
         {
-            return View("Login");
+            return View();
         }
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> Register(string adminName, string password)
-        {
-            if (ModelState.IsValid)
-            {
-                AppUser user = new AppUser()
-                {
-                    UserName = adminName
-                };
-
-                var result = await _userManager.CreateAsync(user,password);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Login"); // Başarılı giriş durumunda yönlendirilecek sayfa
-                }
-                else { 
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
-                }
 
             }
             return View("Register");
