@@ -24,13 +24,14 @@ namespace Saglik_Turizmi_Project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string adminName, string password)
+        public async Task<IActionResult> Index(string adminName,string email, string password)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser()
                 {
-                    UserName = adminName
+                    UserName = adminName,
+                    Email= email
                 };
 
                 var result = await _userManager.CreateAsync(user, password);

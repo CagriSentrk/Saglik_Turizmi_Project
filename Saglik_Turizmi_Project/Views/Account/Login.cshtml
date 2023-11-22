@@ -1,23 +1,19 @@
-﻿@{
+﻿
+@{
     Layout = null;
-
 }
-<form asp-controller="Register" asp-action="Index" method="post">
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <label for="adminName">Login Method</label>
     <div>
         <label for="adminName">Kullanıcı Adı:</label>
         <input type="text" id="adminName" name="adminName" />
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" />
     </div>
     <div>
         <label for="password">Şifre:</label>
         <input type="password" id="password" name="Password" />
     </div>
     <div>
-        <button type="submit">Kayıt Ol</button>
+        <button type="submit">Giriş Yap</button>
     </div>
 </form>
-
-

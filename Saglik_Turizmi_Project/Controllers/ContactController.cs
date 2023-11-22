@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Saglik_Turizmi_Project.Controllers
 {
+
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EfContactDal());

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Saglik_Turizmi_Project.Controllers
 {
-  
+    [Authorize]
     public class AboutController : Controller
     {
         AboutManager AboutManager = new AboutManager(new EfAboutDal());
